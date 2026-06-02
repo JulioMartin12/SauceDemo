@@ -15,6 +15,22 @@ describe('Invertario Sauce Demo', () => {
             and('have.text', '1')
     })
 
+    //11.0 
+    it( 'Agregar múltiples productos y verificar contador del carrito', () => {
+        cy.get('[data-test="add-to-cart-sauce-labs-backpack"').should('be.visible').click()
+        cy.get('#remove-sauce-labs-backpack').should('have.text', 'Remove')
+        cy.get('.shopping_cart_badge').should('be.visible').
+            and('have.text', '1')
+        cy.get('[data-test="add-to-cart-sauce-labs-bike-light"').should('be.visible').click()
+        cy.get('#remove-sauce-labs-bike-light').should('have.text', 'Remove')
+        cy.get('.shopping_cart_badge').should('be.visible').
+            and('have.text', '2') 
+        cy.get('[data-test="add-to-cart-sauce-labs-onesie"').should('be.visible').click()
+        cy.get('#remove-sauce-labs-onesie').should('have.text', 'Remove')
+        cy.get('.shopping_cart_badge').should('be.visible').
+            and('have.text', '3')    
+    })
+
 })
 
 
