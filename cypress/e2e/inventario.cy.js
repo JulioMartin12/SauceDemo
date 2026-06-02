@@ -7,10 +7,12 @@ describe('Invertario Sauce Demo', () => {
         cy.url().should('include', '/inventory.html')
     })
 
+    //06
  it('Verificar cantidad de productos', () => {
     cy.get('[data-test="inventory-item-name"]').should('have.length', 6)
  })
 
+ //08
     it('Ordenar productos por precio (Menor a Mayor)', () => {
      cy.get('[data-test="product-sort-container"]').select('lohi')
 
@@ -20,4 +22,5 @@ describe('Invertario Sauce Demo', () => {
     
     })
 
+    
 })
