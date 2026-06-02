@@ -33,4 +33,24 @@ describe('Checkout', () => {
         cy.get('[data-test="back-to-products"]').should('be.visible').should('have.text', 'Back Home')
     
     })
+
+    //14.0
+    it('Intentar completar checkout con campos vacíos', () => {
+          cy.get('.shopping_cart_link').should('be.visible')
+        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').should('be.visible').click()
+        cy.get('#remove-sauce-labs-backpack').should('have.text', 'Remove')
+        cy.get('.shopping_cart_badge').should('be.visible').
+            and('have.text', '1')
+        cy.get('[data-test="shopping-cart-link"]').click()
+        cy.url().should('include', '/cart.html')
+        cy.get('[data-test="cart-list"]').eq(0).should('contain', 'Sauce Labs Backpack')
+        cy.get('[data-test="checkout"]').should('be.visible').should('have.text', 'Checkout').click()
+        cy.get('[data-test="continue"]').click()
+        cy.get('[data-test="error"]').should('be.visible')
+        .and('contain','Error: First Name is required')
+        cy.get('[data-test="title"]').should('have.text','Checkout: Your Information')
+ //  cy.get('[data-test="error"]').should('be.visible')
+   //.and('contain','Epic sadface: Username is required')
+})
+
 })
